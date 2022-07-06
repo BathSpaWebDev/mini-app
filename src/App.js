@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { dataCars } from "./data/cars"
 import './App.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 function App() {
 
@@ -33,30 +35,42 @@ function App() {
   }
 
 
-  const deleteCar = (position) => {
-    console.log(position);
-    setCars(cars.filter((_, i) => i !== position))
+  const deleteCar = (index) => {
+    setCars(cars.filter((car, i) => i !== index))
   }
 
   return (
     <div className="App">
          <h1>Cars</h1>
 
-         {
-            cars.length > 0 ? 
-            cars.map((car, i) => {
-              return (
-                <p key={i}>
-                  {car.make} {car.model && car.model} { car.id}
-                  <button onClick={() => deleteCar(i)}>Delete car</button>
-                </p>
-              )
-              
-            })
-            : 
-            <p>There are no cars</p>
-         }
+         <Swiper
+            spaceBetween={50}
+            slidesPerView={1}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            {
+                cars.length > 0 ? 
+                cars.map((car, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <div className="swiper-slide-container">
+                          <p>
+                            {car.make} {car.model && car.model} { car.id}
+                            <button onClick={() => deleteCar(i)}>Delete car</button>
+                          </p>
+                      </div>
+                    </SwiperSlide>
+                  )
+                })
+                : 
+                <p>There are no cars</p>
+            }
 
+      
+          </Swiper>
+
+         
          
 
          <p>Lorem ipsum dolor sit amet, consectetur 

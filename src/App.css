@@ -17,3 +17,18 @@
 .cta-banner span,.cta-banner button {
   display:block;
 }
+
+/*Swiper*/
+
+.swiper-slide-container {
+  height:400px;
+  background-color:#444;
+  color:#fff;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.swiper-slide-container p {
+  font-size: 4rem;
+}
