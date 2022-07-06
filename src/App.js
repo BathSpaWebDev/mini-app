@@ -75,7 +75,7 @@ function App() {
                 type="text" 
                 id="make" 
                 onChange={
-                  (e) => setNewCar({...newCar,  make: e.target.value, id: !newCar.id ? cars.length + 1 : newCar.id })
+                  (e) => setNewCar({...newCar,  make: e.target.value })
                 }
                 />
 
@@ -88,7 +88,7 @@ function App() {
                 type="text" 
                 id="model" 
                 onChange={
-                  (e) => setNewCar({...newCar,  model: e.target.value, id: !newCar.id ? cars.length + 1 : newCar.id })
+                  (e) => setNewCar({...newCar,  model: e.target.value })
                 }
                 />
 
