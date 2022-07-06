@@ -35,24 +35,29 @@ function App() {
 
   const deleteCar = (position) => {
     console.log(position);
-    const updatedCars = cars.splice((position - 1), 1);
-    console.log(updatedCars);
-    // setCars(updatedCars);
+    setCars(cars.filter((_, i) => i !== position))
   }
 
   return (
     <div className="App">
          <h1>Cars</h1>
 
-         {cars.map((car, i) => {
-          return (
-            <p key={i}>
-              {car.make} {car.model && car.model} { car.id}
-              <button onClick={() => deleteCar(i)}>Delete car</button>
-            </p>
-          )
-          
-         })}
+         {
+            cars.length > 0 ? 
+            cars.map((car, i) => {
+              return (
+                <p key={i}>
+                  {car.make} {car.model && car.model} { car.id}
+                  <button onClick={() => deleteCar(i)}>Delete car</button>
+                </p>
+              )
+              
+            })
+            : 
+            <p>There are no cars</p>
+         }
+
+         
 
          <p>Lorem ipsum dolor sit amet, consectetur 
           adipisicing elit. Illum necessitatibus dolorum 
@@ -61,6 +66,8 @@ function App() {
           quis, inventore veniam esse debitis.</p>
 
           <form onSubmit={submitForm}>
+
+            <h2>Add car</h2>
             <div className="form-row">
 
                 <label htmlFor="make">Make:</label>
